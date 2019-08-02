@@ -57,5 +57,9 @@ dependencies {
   compileOnly "com.google.android.gms:play-services-maps:$googlePlayServicesMapsVersion"
   compileOnly "com.google.maps.android:android-maps-utils:$androidMapsUtilsVersion"
 
+  implementation 'com.github.bumptech.glide:glide:4.9.0'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+
   implementation "org.osmdroid:osmdroid-android:${osmdroidVersion}"
 }

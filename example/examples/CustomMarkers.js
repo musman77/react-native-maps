@@ -9,6 +9,8 @@ import {
 
 import MapView, { Marker, ProviderPropType } from 'react-native-maps';
 import flagPinkImg from './assets/flag-pink.png';
+import packman from './assets/packman.gif';
+
 
 const { width, height } = Dimensions.get('window');
 
@@ -60,7 +62,7 @@ class CustomMarkers extends React.Component {
           {this.state.markers.map(marker => (
             <Marker
               title={marker.key}
-              image={flagPinkImg}
+              image={packman}
               key={marker.key}
               coordinate={marker.coordinate}
             />

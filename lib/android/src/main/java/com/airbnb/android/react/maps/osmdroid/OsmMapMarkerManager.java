@@ -29,12 +29,18 @@ public class OsmMapMarkerManager extends ViewGroupManager<OsmMapMarker> {
 
     @Override
     public String getName() {
+
         return "OsmMapMarker";
     }
 
+//    @Override
+//    public OsmMapMarker createViewInstance(ThemedReactContext context) {
+//        return new OsmMapMarker(context);
+//    }
+
     @Override
-    public OsmMapMarker createViewInstance(ThemedReactContext context) {
-        return new OsmMapMarker(context);
+    public OsmMapAnimationMarker createViewInstance(ThemedReactContext context) {
+        return new OsmMapAnimationMarker(context);
     }
 
     @Override
@@ -97,6 +103,11 @@ public class OsmMapMarkerManager extends ViewGroupManager<OsmMapMarker> {
     public void setImage(OsmMapMarker view, @Nullable String source) {
         view.setImage(source);
     }
+
+//    @ReactProp(name = "image")
+//    public void setImage(OsmMapAnimationMarker view, @Nullable String source) {
+//        view.setImage(source);
+//    }
 //    public void setImage(AirMapMarker view, ReadableMap image) {
 //        view.setImage(image);
 //    }
