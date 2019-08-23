@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+
   def googlePlayServicesVersion = rootProject.hasProperty('googlePlayServicesVersion')  ? rootProject.googlePlayServicesVersion : DEFAULT_GOOGLE_PLAY_SERVICES_VERSION
   def androidMapsUtilsVersion   = rootProject.hasProperty('androidMapsUtilsVersion')    ? rootProject.androidMapsUtilsVersion   : DEFAULT_ANDROID_MAPS_UTILS_VERSION
   def osmdroidVersion = rootProject.hasProperty('osmdroidVersion')  ? rootProject.osmdroidVersion : DEFAULT_OSMDROID_VERSION

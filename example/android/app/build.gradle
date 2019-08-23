@@ -127,6 +127,7 @@ android {
 
 // todo: check how to define as project properties like our user apps, without messing with
 // root project and lib
+def osmdroidVersion = "6.0.1"
 def googlePlayServicesVersion      = "16.0.1"
 def googlePlayServicesMapsVersion = "16.0.0"
 def androidMapsUtilsVersion        = "0.5+"
@@ -139,5 +140,6 @@ dependencies {
     implementation "com.google.android.gms:play-services-maps:$googlePlayServicesMapsVersion"
     implementation "com.google.maps.android:android-maps-utils:$androidMapsUtilsVersion"
 
+    implementation "org.osmdroid:osmdroid-android:${osmdroidVersion}"
     implementation project(':react-native-maps-lib')
 }
