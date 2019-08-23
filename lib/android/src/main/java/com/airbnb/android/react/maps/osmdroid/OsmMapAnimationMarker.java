@@ -73,7 +73,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
             handler = new Handler();
             runnable = new Runnable(){
                 public void run() {
-                    boolean isDisplayed = marker.isDisplayed();
+                    //boolean isDisplayed = marker.isDisplayed();
                     if (standardGifDecoder != null) {
                         standardGifDecoder.advance();
                         Bitmap b = standardGifDecoder.getNextFrame();
