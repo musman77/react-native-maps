@@ -40,10 +40,10 @@ import javax.annotation.Nullable;
 
 import static android.view.KeyEvent.ACTION_UP;
 
-public class OsmMapMarker extends OsmMapFeature {
+public class OsmMapMarker extends OsmMapFeature  {
 
-    private Marker marker;
-    private MapView mapView;
+    public Marker marker;
+    public MapView mapView;
     private InfoWindow defaultInfoWindow;
     private InfoWindow customInfoWindowCache;
     private Drawable defaultBubbleDrawable;
@@ -62,7 +62,7 @@ public class OsmMapMarker extends OsmMapFeature {
     private OsmMapCallout calloutView;
 
     private float markerHue = 0.0f; // should be between 0 and 360
-    private Drawable iconBitmapDrawable;
+    public Drawable iconBitmapDrawable;
     private Bitmap iconBitmap;
 
     private float rotation = 0.0f;
@@ -120,6 +120,7 @@ public class OsmMapMarker extends OsmMapFeature {
         logoHolder = DraweeHolder.create(createDraweeHierarchy(), context);
         logoHolder.onAttach();
     }
+
 
     private GenericDraweeHierarchy createDraweeHierarchy() {
         return new GenericDraweeHierarchyBuilder(getResources())
@@ -270,10 +271,11 @@ public class OsmMapMarker extends OsmMapFeature {
 
     @Override
     public void addToMap(MapView map) {
+        mapView = map;
         marker = new Marker(map);
         defaultInfoWindow = marker.getInfoWindow();
         defaultInfoWindow.getView().setOnTouchListener(OsmMapMarker.this.infoWindowTouched);
-        mapView = map;
+
         fillProperties(marker);
         map.getOverlays().add(marker);
     }
