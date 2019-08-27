@@ -27,6 +27,7 @@ import com.bumptech.glide.gifdecoder.StandardGifDecoder;
 import org.osmdroid.views.MapView;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import org.osmdroid.views.MapView;
 
@@ -85,7 +86,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                         iconBitmapDrawable = bd;
                         if(marker != null)
                         marker.setIcon(bd);
-
+                        Toast.makeText(mContext,"Hello Javatpoint",Toast.LENGTH_SHORT).show();
                         mapView.invalidate();
                     }
 
