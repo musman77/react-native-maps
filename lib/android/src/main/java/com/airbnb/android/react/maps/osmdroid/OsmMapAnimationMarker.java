@@ -57,6 +57,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
     @Override
     public void setImage(String uri) {
         if (uri != null && uri.contains(".gif") ) {
+            Toast.makeText(mContext,"Hello Javatpoint",Toast.LENGTH_LONG).show();
             this.setGif(uri);
         }else {
             super.setImage(uri);
