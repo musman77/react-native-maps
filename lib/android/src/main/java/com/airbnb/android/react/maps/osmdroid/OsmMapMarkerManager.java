@@ -99,15 +99,15 @@ public class OsmMapMarkerManager extends ViewGroupManager<OsmMapMarker> {
         view.setCalloutAnchor(x, y);
     }
 
-    @ReactProp(name = "image")
-    public void setImage(OsmMapMarker view, @Nullable String source) {
-        view.setImage(source);
-    }
-
 //    @ReactProp(name = "image")
-//    public void setImage(OsmMapAnimationMarker view, @Nullable String source) {
+//    public void setImage(OsmMapMarker view, @Nullable String source) {
 //        view.setImage(source);
 //    }
+
+    @ReactProp(name = "image")
+    public void setImage(OsmMapAnimationMarker view, @Nullable String source) {
+        view.setImage(source);
+    }
 //    public void setImage(AirMapMarker view, ReadableMap image) {
 //        view.setImage(image);
 //    }

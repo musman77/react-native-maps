@@ -230,10 +230,12 @@ public class OsmMapMarker extends OsmMapFeature  {
 
     public void setImage(String uri) {
         if (uri == null) {
+            Toast.makeText(mapView.getContext(),"setImage uri == null",Toast.LENGTH_LONG).show();
             iconBitmapDrawable = null;
             update();
         } else if (uri.startsWith("http://") || uri.startsWith("https://") ||
                 uri.startsWith("file://")) {
+            Toast.makeText(mapView.getContext(),"else if (uri.startsWith(\"http://\") || uri.startsWith(\"https://\")",Toast.LENGTH_LONG).show();
             ImageRequest imageRequest = ImageRequestBuilder
                     .newBuilderWithSource(Uri.parse(uri))
                     .build();
@@ -247,6 +249,7 @@ public class OsmMapMarker extends OsmMapFeature  {
                     .build();
             logoHolder.setController(controller);
         } else {
+            Toast.makeText(mapView.getContext(),"else { iconBitmapDrawable",Toast.LENGTH_LONG).show();
             iconBitmapDrawable = getBitmapDrawableByName(uri);
             if (iconBitmapDrawable != null) {
                 iconBitmap = BitmapFactory.decodeResource(getResources(), getDrawableResourceByName(uri));
@@ -297,7 +300,9 @@ public class OsmMapMarker extends OsmMapFeature  {
     }
 
     private Drawable getIcon() {
+
         if (hasCustomMarkerView) {
+            Toast.makeText( mapView.getContext(),"hasCustomMarkerView",Toast.LENGTH_LONG).show();
             // creating a bitmap from an arbitrary view
             if (iconBitmapDrawable != null) {
                 Bitmap viewBitmap = getCustomMarkerViewBitmap();
@@ -312,11 +317,13 @@ public class OsmMapMarker extends OsmMapFeature  {
                 return new BitmapDrawable(getResources(), getCustomMarkerViewBitmap());
             }
         } else if (iconBitmapDrawable != null) {
+            Toast.makeText( mapView.getContext(),"iconBitmapDrawable",Toast.LENGTH_LONG).show();
             // use local image as a marker
             return iconBitmapDrawable;
         } else {
             // render the default marker pin
             // return BitmapDescriptorFactory.defaultMarker(this.markerHue);
+            Toast.makeText( mapView.getContext(),"null",Toast.LENGTH_LONG).show();
             return null;
         }
     }
