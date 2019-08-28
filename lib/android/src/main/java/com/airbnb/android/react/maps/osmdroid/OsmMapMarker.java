@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
@@ -275,7 +276,7 @@ public class OsmMapMarker extends OsmMapFeature  {
         marker = new Marker(map);
         defaultInfoWindow = marker.getInfoWindow();
         defaultInfoWindow.getView().setOnTouchListener(OsmMapMarker.this.infoWindowTouched);
-
+        Toast.makeText(map.getContext(),"addToMap",Toast.LENGTH_SHORT).show();
         fillProperties(marker);
         map.getOverlays().add(marker);
     }

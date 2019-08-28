@@ -86,7 +86,6 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                         iconBitmapDrawable = bd;
                         if(marker != null)
                         marker.setIcon(bd);
-                        Toast.makeText(mContext,"Hello Javatpoint",Toast.LENGTH_SHORT).show();
                         mapView.invalidate();
                     }
 
