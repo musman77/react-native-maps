@@ -61,7 +61,8 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
             Toast.makeText(mContext,"Hello Javatpoint with Gif",Toast.LENGTH_SHORT).show();
             this.setGif(uri);
         }else {
-            Toast.makeText(mContext,"Hello Javatpoint Without .gif",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext,"uriaa:"+uri,Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext,"Hello Javatpoint Without ++ .gif",Toast.LENGTH_SHORT).show();
             super.setImage(uri);
         }
     }
