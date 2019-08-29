@@ -105,7 +105,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
         }
 
         //final MapView mView = this.mMapView;
-        Glide.with(this.mContext).asGif()
+        Glide.with(mapView).asGif()
        // Glide.(c).asGif()
                 .load(url)
                 //.load(R.drawable.head_crown1)
@@ -113,7 +113,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                         try {
-                            Toast.makeText(mContext,"Inside Glide" ,Toast.LENGTH_LONG).show();
+                            Toast.makeText( mContext,"Inside Glide" ,Toast.LENGTH_LONG).show();
                             Object GifState = resource.getConstantState();
                             Field frameLoader = GifState.getClass().getDeclaredField("frameLoader");
                             frameLoader.setAccessible(true);
@@ -125,13 +125,14 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                             standardGifDecoder = (StandardGifDecoder) gifDecoder.get(gifFrameLoader);
 
                         } catch (Exception ex) {
+                            Toast.makeText( mContext,"ex"+ex ,Toast.LENGTH_LONG).show();
                             ex.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onLoadCleared(@Nullable Drawable placeholder) {
-
+                        Toast.makeText( mContext,"onLoadCleared" ,Toast.LENGTH_LONG).show();
                     }
                 });
     }
