@@ -141,9 +141,9 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
     }
 
 
-    protected void onResume()
-    {
-        handler.removeCallbacks(runnable);
-    }
+//    protected void onResume()
+//    {
+//        handler.removeCallbacks(runnable);
+//    }
 
 }
