@@ -108,8 +108,8 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
         //final MapView mView = this.mMapView;
         Glide.with(this.mContext).asGif()
        // Glide.(c).asGif()
-                 .load(url)
-                .placeholder(R.drawable.cast_mini_controller_progress_drawable)
+                 .load("https://media.giphy.com/media/98uBZTzlXMhkk/giphy.gif")
+                //.placeholder(R.drawable.cast_mini_controller_progress_drawable)
                 //.load(R.drawable.ico)
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
