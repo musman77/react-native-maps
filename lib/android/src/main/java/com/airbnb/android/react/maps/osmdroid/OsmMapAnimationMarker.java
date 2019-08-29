@@ -28,7 +28,7 @@ import com.bumptech.glide.gifdecoder.StandardGifDecoder;
 import org.osmdroid.views.MapView;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
+
 
 import org.osmdroid.views.MapView;
 
@@ -57,30 +57,23 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
 
     @Override
     public void setImage(String uri) {
-        Toast.makeText(mContext,"uri:"+uri,Toast.LENGTH_LONG).show();
         if (uri != null && uri.toLowerCase().contains("headcrown1") ) {
-            Toast.makeText(mContext,"Hello Javatpoint with Gif",Toast.LENGTH_SHORT).show();
             this.setGif(uri);
         }else {
-            Toast.makeText(mContext,"uriaa:"+uri,Toast.LENGTH_LONG).show();
-            Toast.makeText(mContext,"Hello Javatpoint Without ++ .gif",Toast.LENGTH_SHORT).show();
             super.setImage(uri);
         }
     }
 
     public void setGif(String url) {
         if (url == null || url == "") {
-            Toast.makeText(mContext,"url is null",Toast.LENGTH_LONG).show();
             throw new NullPointerException("url");
         }
-        Toast.makeText(mContext,"uriaa not  null" ,Toast.LENGTH_LONG).show();
         //final MarkerEx that = this;
 
         if (handler == null && runnable == null) {
             handler = new Handler();
             runnable = new Runnable(){
                 public void run() {
-                    Toast.makeText(mContext,"Inside run" ,Toast.LENGTH_LONG).show();
                     //boolean isDisplayed = marker.isDisplayed();
                     if (standardGifDecoder != null) {
                         standardGifDecoder.advance();
@@ -116,7 +109,6 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                         try {
-                            Toast.makeText( mContext,"Inside Glide" ,Toast.LENGTH_LONG).show();
                             Object GifState = resource.getConstantState();
                             Field frameLoader = GifState.getClass().getDeclaredField("frameLoader");
                             frameLoader.setAccessible(true);
@@ -128,14 +120,12 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                             standardGifDecoder = (StandardGifDecoder) gifDecoder.get(gifFrameLoader);
 
                         } catch (Exception ex) {
-                            Toast.makeText( mContext,"ex"+ex ,Toast.LENGTH_LONG).show();
                             ex.printStackTrace();
                         }
                     }
 
                     @Override
                     public void onLoadCleared(@Nullable Drawable placeholder) {
-                        Toast.makeText( mContext,"onLoadCleared" ,Toast.LENGTH_LONG).show();
                     }
                 });
     }
