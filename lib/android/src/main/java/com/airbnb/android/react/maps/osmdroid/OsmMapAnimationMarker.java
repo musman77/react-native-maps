@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
+import com.airbnb.android.react.maps.R;
 import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -107,8 +108,9 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
         //final MapView mView = this.mMapView;
         Glide.with(this.mContext).asGif()
        // Glide.(c).asGif()
-                .load(url)
-                //.load(R.drawable.head_crown1)
+                 .load(url)
+                .placeholder(R.drawable.cast_mini_controller_progress_drawable)
+                //.load(R.drawable.ico)
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
