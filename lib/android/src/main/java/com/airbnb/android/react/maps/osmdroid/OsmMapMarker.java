@@ -438,7 +438,7 @@ public class OsmMapMarker extends OsmMapFeature  {
                 getContext().getPackageName());
     }
 
-    private Drawable getBitmapDrawableByName(String name) {
+    public Drawable getBitmapDrawableByName(String name) {
         return getResources().getDrawable(getDrawableResourceByName(name));
     }
 

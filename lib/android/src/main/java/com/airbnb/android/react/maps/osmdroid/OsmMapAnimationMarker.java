@@ -68,6 +68,17 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
         if (url == null || url == "") {
             throw new NullPointerException("url");
         }
+
+        if (url == null) {
+            iconBitmapDrawable = null;
+
+        } else if (url.startsWith("http://") || url.startsWith("https://") ||
+                url.startsWith("file://")) {
+
+        } else {
+            iconBitmapDrawable = getBitmapDrawableByName(url);
+
+        }
         //final MarkerEx that = this;
 
         if (handler == null && runnable == null) {
@@ -104,7 +115,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
        // Glide.(c).asGif()
                  //.load("https://media.giphy.com/media/98uBZTzlXMhkk/giphy.gif")
                 //.placeholder(R.drawable.cast_mini_controller_progress_drawable)
-                .load("http://server.fernholm.org:3000/images/headimages/headCrown1.gif")
+                .load(url)
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
@@ -128,6 +139,12 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                     public void onLoadCleared(@Nullable Drawable placeholder) {
                     }
                 });
+    }
+
+    public int getImage(String imageName) {
+        int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable",this.mContext.getPackageName());
+
+        return drawableResourceId;
     }
 
 
