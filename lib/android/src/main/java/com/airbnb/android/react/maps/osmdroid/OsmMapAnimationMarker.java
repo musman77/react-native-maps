@@ -28,6 +28,8 @@ import com.bumptech.glide.gifdecoder.StandardGifDecoder;
 import org.osmdroid.views.MapView;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.util.TypedValue;
+import android.widget.Toast;
 
 
 import org.osmdroid.views.MapView;
@@ -57,27 +59,29 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
 
     @Override
     public void setImage(String uri) {
-        if (uri != null && uri.toLowerCase().contains("headcrown1") ) {
-            this.setGif(uri);
-        }else {
-            super.setImage(uri);
+        if (uri != null) {
+            TypedValue value = new TypedValue();
+            int resourceId = getImage(uri);
+            getResources().getValue(resourceId, value, true);
+            if(value != null) {
+                if (uri != null && value.toString().toLowerCase().contains(".gif")) {
+                    Toast toast = Toast.makeText(mContext, "Contains Gif", Toast.LENGTH_LONG);
+                    this.setGif(uri);
+                } else {
+                    Toast toast = Toast.makeText(mContext, "Without Gif", Toast.LENGTH_LONG);
+                    super.setImage(uri);
+                }
+            }
         }
     }
 
     public void setGif(String url) {
+        boolean isCompletePath=false;
         if (url == null || url == "") {
             throw new NullPointerException("url");
-        }
-
-        if (url == null) {
-            iconBitmapDrawable = null;
-
-        } else if (url.startsWith("http://") || url.startsWith("https://") ||
+        }  else if (url.startsWith("http://") || url.startsWith("https://") ||
                 url.startsWith("file://")) {
-
-        } else {
-            iconBitmapDrawable = getBitmapDrawableByName(url);
-
+            isCompletePath=true;
         }
         //final MarkerEx that = this;
 
@@ -89,10 +93,6 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
                     if (standardGifDecoder != null) {
                         standardGifDecoder.advance();
                         Bitmap b = standardGifDecoder.getNextFrame();
-
-                        //b.setWidth(b.getWidth() / 2);
-                        //b.setHeight(b.getHeight() / 2);
-
                         BitmapDrawable bd = new BitmapDrawable(b);
                         iconBitmapDrawable = bd;
                         if(marker != null)
@@ -110,12 +110,8 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
             handler.postDelayed(runnable, interval);
         }
 
-        //final MapView mView = this.mMapView;
         Glide.with(this.mContext).asGif()
-       // Glide.(c).asGif()
-                 //.load("https://media.giphy.com/media/98uBZTzlXMhkk/giphy.gif")
-                //.placeholder(R.drawable.cast_mini_controller_progress_drawable)
-                .load(getImage(url))
+                .load(isCompletePath ? url : getImage(url))
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
@@ -143,12 +139,11 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
 
     public int getImage(String imageName) {
         int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable",this.mContext.getPackageName());
-
         return drawableResourceId;
     }
 
-
-//    protected void onResume()
+//
+//    public void onResume()
 //    {
 //        handler.removeCallbacks(runnable);
 //    }
