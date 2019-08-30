@@ -115,7 +115,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
        // Glide.(c).asGif()
                  //.load("https://media.giphy.com/media/98uBZTzlXMhkk/giphy.gif")
                 //.placeholder(R.drawable.cast_mini_controller_progress_drawable)
-                .load(url)
+                .load(getImage(url))
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
