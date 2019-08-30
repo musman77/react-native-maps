@@ -50,6 +50,8 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
     private boolean isTimerRunning = true;
     //private MapView mapView;
     private  Context mContext;
+    private boolean _isCompletePath=false;
+
     public OsmMapAnimationMarker(Context context) {
         super(context);
         this.mContext = context;
@@ -61,30 +63,28 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
     public void setImage(String uri) {
         if (uri != null) {
             TypedValue value = new TypedValue();
-            int resourceId = getImage(uri);
-            getResources().getValue(resourceId, value, true);
-            if(value != null) {
-                if (uri != null && value.toString().toLowerCase().contains(".gif")) {
-                    Toast toast = Toast.makeText(mContext, "Contains Gif", Toast.LENGTH_LONG);
-                    this.setGif(uri);
-                } else {
-                    Toast toast = Toast.makeText(mContext, "Without Gif", Toast.LENGTH_LONG);
-                    super.setImage(uri);
-                }
+            if (uri == null || uri == "") {
+                throw new NullPointerException("url");
+            }  else if (uri.startsWith("http://") || uri.startsWith("https://") ||
+                    uri.startsWith("file://")) {
+                _isCompletePath=true;
+            }else{
+                int resourceId = getImage(uri);
+                getResources().getValue(resourceId, value, true);
             }
+
+            if (value != null && value.toString().toLowerCase().contains(".gif")) {
+                Toast toast = Toast.makeText(mContext, "Contains Gif", Toast.LENGTH_LONG);
+                this.setGif(uri);
+            } else {
+                Toast toast = Toast.makeText(mContext, "Without Gif", Toast.LENGTH_LONG);
+                super.setImage(uri);
+            }
+
         }
     }
 
     public void setGif(String url) {
-        boolean isCompletePath=false;
-        if (url == null || url == "") {
-            throw new NullPointerException("url");
-        }  else if (url.startsWith("http://") || url.startsWith("https://") ||
-                url.startsWith("file://")) {
-            isCompletePath=true;
-        }
-        //final MarkerEx that = this;
-
         if (handler == null && runnable == null) {
             handler = new Handler();
             runnable = new Runnable(){
@@ -111,7 +111,7 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
         }
 
         Glide.with(this.mContext).asGif()
-                .load(isCompletePath ? url : getImage(url))
+                .load(_isCompletePath ? url : getImage(url))
                 .into(new CustomTarget<GifDrawable>() {
                     @Override
                     public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
