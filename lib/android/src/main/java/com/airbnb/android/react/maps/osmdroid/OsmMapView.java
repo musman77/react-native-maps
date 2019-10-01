@@ -119,6 +119,21 @@ public class OsmMapView extends MapView implements MapView.OnFirstLayoutListener
         this.setTilesScaledToDpi(true);
     }
 
+
+
+
+
+
+
+    public void setZoomBoundCoordinates(ReadableArray coordinates){
+        ReadableMap indexZero = coordinates.getMap(0);
+        setScrollableAreaLimitLongitude(indexZero.getDouble("pWestLatitude"),indexZero.getDouble("pEastLatitude"),0);
+        setScrollableAreaLimitLatitude(indexZero.getDouble("pNorthLatitude"),indexZero.getDouble("pSouthLatitude"),0);
+    }
+
+
+
+
     /*
      * Disabled builtin zoom controls for good, because it does not work
      * after view detached even if reattached to window.
@@ -696,4 +711,6 @@ public class OsmMapView extends MapView implements MapView.OnFirstLayoutListener
         }
         mRotationGestureOverlay.setEnabled(rotateEnabled);
     }
+
+
 }

@@ -205,6 +205,12 @@ public class OsmMapManager extends ViewGroupManager<OsmMapView> {
         view.setMaxZoomLevel((double) maxZoomLevel);
     }
 
+
+    @ReactProp(name = "zoomBoundCoordinates")
+    public void setCoordinate(OsmMapView view, ReadableArray coordinates) {
+        view.setZoomBoundCoordinates(coordinates);
+    }
+
     @Override
     public void receiveCommand(OsmMapView view, int commandId, @Nullable ReadableArray args) {
         Integer duration;
