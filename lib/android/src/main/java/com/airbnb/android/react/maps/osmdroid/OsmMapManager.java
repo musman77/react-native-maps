@@ -206,10 +206,10 @@ public class OsmMapManager extends ViewGroupManager<OsmMapView> {
     }
 
 
-    @ReactProp(name = "zoomBoundCoordinates")
-    public void setCoordinate(OsmMapView view, ReadableArray coordinates) {
-       // view.setZoomBoundCoordinates(coordinates);
-    }
+//    @ReactProp(name = "zoomBoundCoordinates")
+//    public void setCoordinate(OsmMapView view, ReadableArray coordinates) {
+//       // view.setZoomBoundCoordinates(coordinates);
+//    }
 
     @Override
     public void receiveCommand(OsmMapView view, int commandId, @Nullable ReadableArray args) {
