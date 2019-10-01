@@ -119,9 +119,6 @@ public class OsmMapView extends MapView implements MapView.OnFirstLayoutListener
         this.setTilesScaledToDpi(true);
     }
 
-
-
-
 //    @Override
 //    public void scrollBy(int x, int y) {
 //        setScrollableAreaLimitLongitude(getBoundingBox().getLonWest(),getBoundingBox().getLonEast(),0);
@@ -129,16 +126,11 @@ public class OsmMapView extends MapView implements MapView.OnFirstLayoutListener
 //        //scrollTo((int)(getMapScrollX()), (int)(getMapScrollY()));
 //    }
 
-
-
-//    public void setZoomBoundCoordinates(ReadableArray coordinates){
-//        ReadableMap indexZero = coordinates.getMap(0);
-//        setScrollableAreaLimitLongitude(indexZero.getDouble("pWestLatitude"),indexZero.getDouble("pEastLatitude"),0);
-//        setScrollableAreaLimitLatitude(indexZero.getDouble("pNorthLatitude"),indexZero.getDouble("pSouthLatitude"),0);
-//    }
-
-
-
+    public void setZoomBoundCoordinates(ReadableArray coordinates){
+        ReadableMap indexZero = coordinates.getMap(0);
+        setScrollableAreaLimitLongitude(indexZero.getDouble("pWestLatitude"),indexZero.getDouble("pEastLatitude"),0);
+        setScrollableAreaLimitLatitude(indexZero.getDouble("pNorthLatitude"),indexZero.getDouble("pSouthLatitude"),0);
+    }
 
     /*
      * Disabled builtin zoom controls for good, because it does not work
