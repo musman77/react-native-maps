@@ -122,6 +122,12 @@ public class OsmMapView extends MapView implements MapView.OnFirstLayoutListener
 
 
 
+//    @Override
+//    public void scrollBy(int x, int y) {
+//        setScrollableAreaLimitLongitude(getBoundingBox().getLonWest(),getBoundingBox().getLonEast(),0);
+//        setScrollableAreaLimitLatitude(getBoundingBox().getLatNorth(),getBoundingBox().getLatSouth(),0);
+//        //scrollTo((int)(getMapScrollX()), (int)(getMapScrollY()));
+//    }
 
 
 
