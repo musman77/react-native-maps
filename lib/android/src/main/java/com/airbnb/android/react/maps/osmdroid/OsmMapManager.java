@@ -208,7 +208,7 @@ public class OsmMapManager extends ViewGroupManager<OsmMapView> {
 
     @ReactProp(name = "zoomBoundCoordinates")
     public void setCoordinate(OsmMapView view, ReadableArray coordinates) {
-        view.setZoomBoundCoordinates(coordinates);
+       // view.setZoomBoundCoordinates(coordinates);
     }
 
     @Override
