@@ -75,10 +75,10 @@ public class OsmMapAnimationMarker extends  OsmMapMarker {
 
             if ((value != null && value.toString().toLowerCase().contains(".gif"))
                     || (_isCompletePath && uri.toLowerCase().contains(".gif"))) {
-                Toast toast = Toast.makeText(mContext, "Contains Gif", Toast.LENGTH_LONG);
+                ///Toast toast = Toast.makeText(mContext, "Contains Gif", Toast.LENGTH_LONG);
                 this.setGif(uri);
             } else {
-                Toast toast = Toast.makeText(mContext, "Without Gif", Toast.LENGTH_LONG);
+                //Toast toast = Toast.makeText(mContext, "Without Gif", Toast.LENGTH_LONG);
                 super.setImage(uri);
             }
 
